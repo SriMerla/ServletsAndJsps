@@ -1,0 +1,30 @@
+package com.practise.servletsJsps;
+
+import java.sql.ResultSet;
+
+import com.servlets.dao.User;
+
+
+
+public class Service {
+	 User user;
+	public User check(String username, String password){
+		if(username != null){
+		DatabaseUtil databaseUtil = new DatabaseUtil();
+		ResultSet resultSet = databaseUtil.executeSQL("SELECT * FROM USERS_REGISTERED where USERNAME='"+username+"'");
+		if(resultSet.next()) {
+       	 user = new User(username, password);
+      
+       	  String uname = resultSet.getString("USERNAME");
+       	  String pass = resultSet.getString("PASSWORD");
+     	  user.setUsername(uname);
+     	  user.setPassword(pass);
+       	  
+        }
+		}
+		
+		return user;	
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<students>
+   <student id="1">
+       <name>Merla Sri</name>
+       <age>28</age>
+       <subjects>
+           <maths>45</maths>
+           <physics>60</physics>
+           <english>90</english>
+       </subjects>   
+   </student>
+   <student id="2">
+       <name>Kakara Satish</name>
+       <age>30</age>
+       <subjects>
+           <maths>75</maths>
+           <physics>86</physics>
+           <english>95</english>
+        </subjects>   
+   </student>
+</students>

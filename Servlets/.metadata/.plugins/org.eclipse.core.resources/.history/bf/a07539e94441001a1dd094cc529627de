@@ -1,0 +1,24 @@
+package com.practise.servletsJsps;
+
+import java.sql.ResultSet;
+
+import com.web.app.User;
+
+public class Service {
+	
+	public boolean check(String username){
+		if(username != null){
+		DatabaseUtil databaseUtil = new DatabaseUtil();
+		ResultSet resultSet = databaseUtil.executeSQL("SELECT * FROM USERS_REGISTERED where USERNAME='"+username+"'");
+		if(resultSet.next()) {
+       	User user=new User(username, username);
+            user.username=resultSet.getString("USERNAME");
+            user.password=resultSet.getString("PASSWORD");
+        }
+		}
+		
+		return false;	
+		
+	}
+
+}

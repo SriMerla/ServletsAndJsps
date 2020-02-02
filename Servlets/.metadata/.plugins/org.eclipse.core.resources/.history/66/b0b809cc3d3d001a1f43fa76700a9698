@@ -1,0 +1,113 @@
+package com.web.app;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class DatabaseUtil {
+	
+	public void executeSQL(String sql){
+         
+        try (Connection conn = DriverManager.getConnection(
+                "jdbc:oracle:thin:@192.168.1.227:1521/orcl", "system", "oracle")){
+             
+        		Statement statement = conn.createStatement();
+        		statement.execute(sql);
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	}
+	
+	public void insertNewUser(String username, String password){
+		
+		try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+		
+		System.out.println("INSERT INTO USERS_REGISTERED VALUES ('" + username + "','" + password + "')");
+		executeSQL("INSERT INTO USERS_REGISTERED VALUES ('" + username + "','" + password + "')" );
+	}
+	
+	public User getUserByUserName(String username){
+		try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+		User user=null;
+		
+		try (Connection conn = DriverManager.getConnection(
+                "jdbc:oracle:thin:@192.168.1.227:1521/orcl", "system", "oracle")){
+             
+        	 Statement statement = conn.createStatement();
+        	 ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS_REGISTERED where USERNAME='"+username+"'");
+             if(resultSet.next()) {
+            	 user=new User();
+                 user.username=resultSet.getString("USERNAME");
+                 user.password=resultSet.getString("PASSWORD");
+             }
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }		
+		
+		return user;
+
+	}
+	
+	public List<User> getUsers(){
+
+		List<User> users = new ArrayList<User>();
+		try (Connection conn = DriverManager.getConnection(
+                "jdbc:oracle:thin:@192.168.1.227:1521/orcl", "system", "oracle")){
+             
+        	 Statement statement = conn.createStatement();
+        	 ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS_REGISTERED");
+             while (resultSet.next()) {
+
+                
+                 User user = new User();
+                 user.username=resultSet.getString("USERNAME");
+                 user.password=resultSet.getString("PASSWORD");
+                 users.add(user);
+
+             }
+
+        } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }		
+		
+		return users;
+	}
+	
+	
+
+	public static void main(String... args){
+		DatabaseUtil databaseUtil = new DatabaseUtil();
+		databaseUtil.getUserByUserName("Sris");		
+	}
+	
+	/*	public static void main(String... args){
+		System.out.println("Test");
+		
+		DatabaseUtil databaseUtil = new DatabaseUtil();
+		databaseUtil.executeSQL("INSERT INTO USERS VALUES('sri','pass2')");
+		
+		System.out.println("Test");
+
+	}*/
+
+}

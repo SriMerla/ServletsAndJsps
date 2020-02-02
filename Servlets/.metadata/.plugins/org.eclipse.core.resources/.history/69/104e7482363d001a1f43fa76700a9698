@@ -1,0 +1,40 @@
+package com.web.app;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class UserLogin
+ */
+public class UserLogin extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String user =request.getParameter("username");
+		PrintWriter out = response.getWriter();
+		out.println("Hello from userLogin");
+		//Fetching data from database
+		DatabaseUtil databaseUtil = new DatabaseUtil();
+	System.out.println( databaseUtil.getUserByUserName(user));
+//		if(userInDB.equals(username)){
+//			
+//			out.println("Login succesfull!");
+//			
+//		}
+//		else{
+//			
+//			out.println("Login Failed");
+//			
+//		}
+	}
+
+}

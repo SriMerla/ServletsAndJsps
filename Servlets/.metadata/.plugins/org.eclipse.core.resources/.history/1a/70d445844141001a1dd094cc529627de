@@ -1,0 +1,38 @@
+package com.practise.servletsJsps;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.servlets.dao.User;
+
+/**
+ * Servlet implementation class Register
+ */
+public class Register extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String uname = request.getParameter("username");
+		String pass = request.getParameter("password");
+		
+		User user = new User(uname, pass);
+		HttpSession session = request.getSession();
+		session.setAttribute("uname", uname);
+	    DatabaseUtil databaseUtil = new DatabaseUtil();
+	    databaseUtil.executeSQL(("INSERT INTO USERS_REGISTERED VALUES ('" + uname + "','" + pass + "')" ));
+		 
+	    response.sendRedirect("home.jsp");
+	    
+		
+	}
+
+}

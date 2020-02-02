@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ <%@ page import="com.practise.servletsJsps.DatabaseUtil, java.sql.ResultSet, java.sql.*" %>   
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Your Tweets</title>
+</head>
+<body>
+
+    <%! String username;
+        String data;
+    %>
+    <% 
+      
+      username = session.getAttribute("uname").toString();
+    try {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+	
+	
+	try (Connection conn = DriverManager.getConnection(
+            "jdbc:oracle:thin:@192.168.1.227:1521/orcl", "system", "oracle")){
+         
+    	 Statement statement = conn.createStatement();
+       ResultSet tweets = statement.executeQuery("SELECT TWEET FROM TWEETS where USERNAME='"+username+"'");
+       while(tweets.next()){
+    	   
+    	  data = tweets.getString("TWEET");
+       }
+       } catch (SQLException e) {
+             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+              e.printStackTrace();
+        }
+       
+    
+    %>
+    
+    <%=username %> tweets are : <br>
+    <%=data %>
+</body>
+</html>

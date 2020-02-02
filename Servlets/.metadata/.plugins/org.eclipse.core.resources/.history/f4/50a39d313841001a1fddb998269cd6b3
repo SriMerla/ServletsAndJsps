@@ -1,0 +1,21 @@
+package com.servlets.dao;
+
+public class Register {
+	
+	String username;
+	String password;
+	
+	
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + "]";
+	}
+
+
+	public Register(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+
+}

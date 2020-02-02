@@ -1,0 +1,14 @@
+package com.practise.mvc.service;
+
+public class LoginService {
+	
+	public boolean authenticate(String userId, String password){
+		// can write code to retrieve data from database and can check the credential 
+		if(password == null || password.trim() == " "){
+			return false;
+		}
+		return true;
+		
+	}
+
+}

@@ -1,0 +1,39 @@
+@CHARSET "ISO-8859-1";
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background-color: #f2f4b9;
+	padding-top: 10vh;
+}
+
+.form-container{
+	width:250px;
+	height: auto;
+	padding: 20px 30px;
+	backgroung-color: #fff;
+	border-radius:10px;
+	box-shadow: 0 0 10px 0 #0000;
+	margin: auto;
+}
+
+input[type=text], input[type=password]{
+	width: 200%
+	padding: 5px 20px;
+	margin: 8px 0px;
+	display: inline-block;
+	border: 2px solid #ccc;
+	box-sizing: border-box;
+}
+
+input[type=submit]{
+	
+	background-color: #4CAF50;
+	color: white;
+	padding: 5px 20px;
+	margin: 8px 0;
+	cursor: pointer;
+	width: 100%;
+	
+}

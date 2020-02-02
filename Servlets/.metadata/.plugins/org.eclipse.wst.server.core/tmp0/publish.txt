@@ -1,0 +1,9 @@
+#Tomcat publish data
+#Thu Jan 30 00:32:26 EST 2020
+org.eclipse.jst.jee.server\:LoginApp=C\:\\Users\\srime\\Downloads\\Tomcat\\apache-tomcat-6.0.53-windows-x64\\apache-tomcat-6.0.53\\wtpwebapps\\LoginApp
+org.eclipse.jst.jee.server\:DemoApp=C\:\\Users\\srime\\Downloads\\Tomcat\\apache-tomcat-6.0.53-windows-x64\\apache-tomcat-6.0.53\\wtpwebapps\\DemoApp
+org.eclipse.jst.jee.server\:WebApplicationProject=C\:\\Users\\srime\\Downloads\\Tomcat\\apache-tomcat-6.0.53-windows-x64\\apache-tomcat-6.0.53\\wtpwebapps\\WebApplicationProject
+org.eclipse.jst.jee.server\:DemoJSP=C\:\\Users\\srime\\Downloads\\Tomcat\\apache-tomcat-6.0.53-windows-x64\\apache-tomcat-6.0.53\\wtpwebapps\\DemoJSP
+org.eclipse.jst.jee.server\:SimpleServletProject=C\:\\Users\\srime\\Downloads\\Tomcat\\apache-tomcat-6.0.53-windows-x64\\apache-tomcat-6.0.53\\wtpwebapps\\SimpleServletProject
+org.eclipse.jst.jee.server\:JSTLDemo=C\:\\Users\\srime\\Downloads\\Tomcat\\apache-tomcat-6.0.53-windows-x64\\apache-tomcat-6.0.53\\wtpwebapps\\JSTLDemo
+org.eclipse.jst.jee.server\:ServletsAndJspDemo=C\:\\Users\\srime\\Downloads\\Tomcat\\apache-tomcat-6.0.53-windows-x64\\apache-tomcat-6.0.53\\wtpwebapps\\ServletsAndJspDemo

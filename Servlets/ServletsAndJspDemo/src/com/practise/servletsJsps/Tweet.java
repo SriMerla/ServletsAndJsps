@@ -1,0 +1,32 @@
+package com.practise.servletsJsps;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+
+/**
+ * Servlet implementation class Tweet
+ */
+public class Tweet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		 HttpSession session = request.getSession();
+      
+         String username = (String) session.getAttribute("uname");
+	  	  String tweet = request.getParameter("tweet");
+	  	  
+		 DatabaseUtil databaseUtil = new DatabaseUtil();
+		 databaseUtil.executeSQL(("INSERT INTO TWEETS VALUES ('" + username + "','" + tweet + "')" ));
+		 
+		 response.sendRedirect("viewtweet.jsp");
+	}
+
+}

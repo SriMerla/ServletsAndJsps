@@ -1,0 +1,9 @@
+package com.practise.mvc.dto;
+
+public class User {
+	
+	private String userName;
+	private String userId;
+	
+
+}
