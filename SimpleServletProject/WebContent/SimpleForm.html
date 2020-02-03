@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Simple Form</title>
+</head>
+<body>
+ <form method="post" action="xmlServletpath">
+      First Name : <input name="userName" /> <br>
+      Last Name :  <input name="lastName" />
+      <br>
+      Sex : 
+      <input type="radio" name="Male" value="m" >Male</input>
+      <input type="radio" name="Female" value="f" >Female</input> 
+      <br>
+      Profession : 
+      <input type="radio" name="prof" value="Devloper" >Devloper</input>
+      <input type="radio" name="prof" value="Tester" >Tester</input>      
+      <br>
+      Country : 
+      <select name="location" multiple size=3>
+          <option value="IN">India</option>
+          <option value="US">UnitedStates</option>
+          <option value="Australia">Australia</option>
+          <option value="UK">UnitedKingdom</option>
+          <option value="Africa">Africa</option>
+          <option value="Germany">Germany</option>
+      </select>
+      <br>
+      <input type="submit" />   
+
+ </form>
+
+</body>
+</html>
